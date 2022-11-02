@@ -1,0 +1,66 @@
+body{
+    margin: 0 0 0 0;
+    font-family: 'Varela Round', sans-serif;
+    overflow-x: hidden;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+#menu{
+    background-color: rgb(145, 145, 145);
+    padding-bottom: 20px;
+}
+.primary-header{
+    align-items: center;
+
+}
+#nav-logo{
+    width: 180px;
+    margin-top: 40px;
+    margin-left: 190px;
+}
+.nav{
+    list-style: none;
+    font-size: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 90px;
+    float: right;
+    margin-top: 60px;
+    margin-right: 200px;
+}
+#formularz{
+    font-size: 20px;
+    margin-top: 160px;
+    margin-left: 190px;
+}
+#button{
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 200px;
+}
+.name{
+    font-size: 30px;
+}
+#zdjecie{
+    float: right;
+    margin-top: 80px;
+    margin-right: 100px;
+}
+#img-lekarz{
+    width: 600px;
+}
+#message{
+    margin-left: 190px;
+    margin-top: 20px;
+    font-size: 18px;
+}
+footer{
+    margin-top: 110px;
+    text-align: center;
+    background-color: grey;
+    padding: 30px;
+    font-size: 20px;
+    word-spacing: 5px;
+}
