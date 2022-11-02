@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Przychodnie NFZ | Zapisz się teraz</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header id="primary-header">
+            <div id="menu">
+                <a href=""><img id="nav-logo" src="NFZ- logo.png"></a>
+                <ul class="nav">
+                    <li><a href="">Placówki</a></li>
+                    <li><a href="">Lekarze</a></li>
+                    <li><a href="">Instrukcja</a></li>
+                    <li><a href="">Kontakt</a></li>
+                </ul>
+            </div>
+        </header>
+        <div id="zdjecie">
+            <img id="img-lekarz" src="https://www.freepnglogos.com/uploads/doctor-png/doctor-align-with-lower-cost-and-increased-quality-alignment-21.png">
+        </div>
+        <div id="formularz">
+            <h2>Uzupełnij formularz:</h2> <br>
+            Imię: <input id="imie" class="name" type="text"> <br>
+            Nazwisko: <input class="name" id="nazwisko" type="text"> <br>
+            Podaj date: <input class="name" id="data" type="text"> <br>
+            Choroba: <input class="name" id="choroba" type="text"> <br>
+            Intencje: 
+            <select class="name" id="typ">
+                <option value="Konsultacja">Konsultacja</option>
+                <option value="Operacja">Operacja</option>
+                <option value="Szczepienie">Szczepienie</option>
+                <option value="Wizyta">Wizyta</option>
+            </select><br>
+            <button class="name" id="button" type="button">Zatwierdz</button>
+        </div>
+        <div id="message"></div>
+        <script>
+            
+            var button = document.getElementById("button");
+            var klik=function(){
+                var imie = document.getElementById("imie").value;
+                var nazwisko = document.getElementById("nazwisko").value;
+                var data = document.getElementById("data").value;
+                var choroba = document.getElementById("choroba").value;
+                var typ = document.getElementById("typ").value;
+                var informacja;
+                if (typ === "Konsultacja") {
+                    informacja = "Zapisano! Konsultacje pacjenta " + imie +" "+ nazwisko + " w dniu " + data + " z powodu: " + choroba;
+                } else if (typ === "Operacja") {
+                    informacja = "Zapisano! Operacja pacjenta " + imie +" "+ nazwisko + " w dniu " + data + " z powodu: " + choroba;
+                } else if (typ === "Szczepienie") {
+                    informacja = "Zapisano! Szczepienie pacjenta " + imie +" "+ nazwisko + " w dniu " + data + " z powodu: " + choroba;
+                } else if (typ ==="Wizyta"){
+                    informacja = "Zapisano! Wizyta pacjenta " + imie +" "+ nazwisko + " w dniu " + data + " z powodu: " + choroba;
+                }
+                document.getElementById("message").textContent += informacja;
+            }
+            button.addEventListener("click", klik);
+        </script>
+    </body>
+    <footer>
+        Wszelkie prawa ZASTRZEŻONE, Jakub Ostrowski, Mateusz Kawik, essa
+    </footer>
+</html>
