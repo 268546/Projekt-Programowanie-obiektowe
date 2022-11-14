@@ -8,6 +8,9 @@
         <link rel="preconnect" href="https://fonts.googleapis.com"> 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
     </head>
     <body>
         <header id="primary-header">
@@ -18,30 +21,72 @@
                     <li><a href="">Lekarze</a></li>
                     <li><a href="">Instrukcja</a></li>
                     <li><a href="">Kontakt</a></li>
+                    <li><a href="">Zaloguj</a></li>
                 </ul>
             </div>
         </header>
-        <div id="zdjecie">
-            <img id="img-lekarz" src="https://www.freepnglogos.com/uploads/doctor-png/doctor-align-with-lower-cost-and-increased-quality-alignment-21.png">
+        <div id="jeden">
+            <div><img id="lekarz"src="https://www.freepnglogos.com/uploads/doctor-png/png-woman-doctor-transparent-woman-doctor-images-40.png"></div>
+            <div id="reklama">
+                <h3>Ponad <span class="liczba" id="placowki-wyliczanie">0</span> tysięcy<br> twoich placówek w Polsce<br></h3>
+                <h3>Ponad <span class="liczba" id="lekarze-wyliczanie">0</span>tysięcy<br> lekarzy czekających na ciebie w Polsce<br></h3>
+                <h3>Ponad <span class="liczba" id="pacjenci-wyliczanie">0</span> milionów<br> szczęśliwych pacjentów <br></h3>
+            </div>
+            <div id="formularz">
+                <h2 id="uzupelnij">Uzupełnij formularz:</h2> <br>
+                Imię pacjenta:<br> <input id="imie" class="name" type="text"> <br>
+                Nazwisko pacjenta: <br><input class="name" id="nazwisko" type="text"> <br>
+                Podaj date i godzine: <br><input class="name" id="data" type="date" placeholder="dd-mm-yyyy"><input type="time" class="name" id="czas" placeholder="12:00"> <br>
+                Choroba: <br><input class="name" id="choroba" type="text"> <br>
+                Intencje: <br>
+                <select class="name" id="typ">
+                    <option value="Konsultacja">Konsultacja</option>
+                    <option value="Operacja">Operacja</option>
+                    <option value="Szczepienie">Szczepienie</option>
+                    <option value="Wizyta">Wizyta</option>
+                </select><br>
+                Email pacjenta: <br><input id="email" class="name" type="text"> <br>
+                <button class="name" id="button" type="button">Zatwierdz</button>
+            </div>
         </div>
-        <div id="formularz">
-            <h2>Uzupełnij formularz:</h2> <br>
-            Imię: <input id="imie" class="name" type="text"> <br>
-            Nazwisko: <input class="name" id="nazwisko" type="text"> <br>
-            Podaj date: <input class="name" id="data" type="text"> <br>
-            Choroba: <input class="name" id="choroba" type="text"> <br>
-            Intencje: 
-            <select class="name" id="typ">
-                <option value="Konsultacja">Konsultacja</option>
-                <option value="Operacja">Operacja</option>
-                <option value="Szczepienie">Szczepienie</option>
-                <option value="Wizyta">Wizyta</option>
-            </select><br>
-            <button class="name" id="button" type="button">Zatwierdz</button>
-        </div>
-        <div id="message"></div>
+            <div id="message"></div>        
         <script>
+            var placowki = document.getElementById("placowki-wyliczanie");
+            console.log(placowki);
+            var liczenie = function(){
+                var obecnyczas = parseFloat(placowki.textContent);
+                if (obecnyczas < 21) {
+                    placowki.textContent = obecnyczas + 1;
+                } else {
+                    window.clearInterval(timer);
+                };
+            }
+            var timer = window.setInterval(liczenie, 100);
+
+            var lekarze = document.getElementById("lekarze-wyliczanie");
+            console.log(lekarze);
+            var liczenie = function(){
+                var obecnyczas = parseFloat(lekarze.textContent);
+                if (obecnyczas < 150) {
+                    lekarze.textContent = obecnyczas + 1;
+                } else {
+                    window.clearInterval(timer);
+                };
+            }
+            var timer = window.setInterval(liczenie, 20);
             
+            var pacjenci = document.getElementById("pacjenci-wyliczanie");
+            console.log(pacjenci);
+            var liczenie = function(){
+                var obecnyczas = parseFloat(pacjenci.textContent);
+                if (obecnyczas < 30) {
+                    pacjenci.textContent = obecnyczas + 1;
+                } else {
+                    window.clearInterval(timer);
+                };
+            }
+            var timer = window.setInterval(liczenie, 80);
+
             var button = document.getElementById("button");
             var klik=function(){
                 var imie = document.getElementById("imie").value;
@@ -49,15 +94,16 @@
                 var data = document.getElementById("data").value;
                 var choroba = document.getElementById("choroba").value;
                 var typ = document.getElementById("typ").value;
+                var czas = document.getElementById("czas").value;
                 var informacja;
                 if (typ === "Konsultacja") {
-                    informacja = "Zapisano! Konsultacje pacjenta " + imie +" "+ nazwisko + " w dniu " + data + " z powodu: " + choroba;
+                    informacja = "Zapisano! Konsultacje pacjenta " + imie +" "+ nazwisko + " w dniu " + data +" o godzinie "+ czas + " z powodu: " + choroba;
                 } else if (typ === "Operacja") {
-                    informacja = "Zapisano! Operacja pacjenta " + imie +" "+ nazwisko + " w dniu " + data + " z powodu: " + choroba;
+                    informacja = "Zapisano! Operacja pacjenta " + imie +" "+ nazwisko + " w dniu " + data +" o godzinie "+ czas + " z powodu: " + choroba;
                 } else if (typ === "Szczepienie") {
-                    informacja = "Zapisano! Szczepienie pacjenta " + imie +" "+ nazwisko + " w dniu " + data + " z powodu: " + choroba;
+                    informacja = "Zapisano! Szczepienie pacjenta " + imie +" "+ nazwisko + " w dniu " + data +" o godzinie "+ czas + " z powodu: " + choroba;
                 } else if (typ ==="Wizyta"){
-                    informacja = "Zapisano! Wizyta pacjenta " + imie +" "+ nazwisko + " w dniu " + data + " z powodu: " + choroba;
+                    informacja = "Zapisano! Wizyta pacjenta " + imie +" "+ nazwisko + " w dniu " + data +" o godzinie "+ czas + " z powodu: " + choroba;
                 }
                 document.getElementById("message").textContent += informacja;
             }
